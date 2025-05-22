@@ -1,6 +1,13 @@
 import { useState } from "react";
-import { DSButton, DSDivSign, DSNavBar, DSText } from "../../components";
-import "./styles.css";
+import {
+  DSButton,
+  DSDivSign,
+  DSNavBar,
+  DSText,
+  DSFooter,
+  DSDivTitle,
+} from "../../components";
+import "./styles.scss";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
 
@@ -69,6 +76,12 @@ const PageHome = () => {
           />
         </div>
       </div>
+      <div className="div-arrival">
+        <DSDivTitle divider title={"New Arrivals"} onClick={() => {}} />
+        <DSDivTitle title={"top selling"} onClick={() => {}} />
+      </div>
+      <br />
+      <DSFooter />
     </section>
   );
 };

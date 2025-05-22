@@ -1,0 +1,55 @@
+.div-arrival {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+
+  .p-arrival {
+    font-family: "integral", sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    display: block;
+    margin: 0px;
+  }
+  .div-divider {
+    width: 80%;
+    height: 1px;
+    background-color: #e6e6e6;
+  }
+  .div-arrival-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+  .p-title-product {
+    text-transform: none;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    display: block;
+    margin: 0px;
+  }
+  .p-price-product {
+    font-weight: bold;
+    font-size: 24px;
+    text-align: left;
+    display: block;
+    margin: 0px;
+  }
+
+  img {
+    width: 295px;
+    height: 298px;
+  }
+  .div-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+}
