@@ -1,11 +1,10 @@
+import { DSButton } from "..";
 import "./styles.css";
 const DSFooter = () => {
   return (
-    
     <footer>
-     
       <section className="card">
-        <div>
+        <div className="card-img">
           <img
             src="/src/presentation/assets/img/letreroFooter.png"
             alt="STAY UPTO DATE ABOUT OUR LATEST OFFERS"
@@ -19,7 +18,12 @@ const DSFooter = () => {
           />
 
           <input type="text" placeholder="Enter your email address" />
-          <input  type="text" value="Subscribe to Newsletter"className="input-Sub" readOnly
+          <DSButton 
+          text="Subscribe to Newsletter"
+          onClick={() => {}} 
+          color="black"
+          backgroundColor="white"
+
           />
         </div>
       </section>
@@ -84,9 +88,12 @@ const DSFooter = () => {
       <div className="hr">
         <hr />
       </div>
-
-      <section className="creditos">
+<div className="div-divider"></div>
+      <section className="creditos ">
+        <div>
         <p>Shop.co © 2000-2023, All Rights Reserved</p>
+
+        </div>
         <div className="mediosPago">
           <img src="/src/presentation/assets/img/visa.png" alt="visa" />
           <img

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   DSButton,
   DSDivSign,
@@ -8,8 +8,25 @@ import {
   DSDivTitle,
 } from "../../components";
 import "./styles.scss";
+import { ProductUseCases } from "../../../application/use-cases/product.use-cases";
+import { ProductApi } from "../../../insfrastructure/Product-api";
+import { Product } from "../../../domain/entities/product-entity/product.entity";
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      const useCase = new ProductUseCases(new ProductApi());
+      const data = await useCase.getAllProducts();
+      if (data.status === 200) {
+        if ("response" in data) {
+          setProducts(data.response.products);
+        }
+      }
+    };
+    getData();
+  }, []);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -77,8 +94,18 @@ const PageHome = () => {
         </div>
       </div>
       <div className="div-arrival">
-        <DSDivTitle divider title={"New Arrivals"} onClick={() => {}} />
-        <DSDivTitle title={"top selling"} onClick={() => {}} />
+        <DSDivTitle
+        button
+          products={products}
+          divider
+          title="New Arrivals"
+          onClick={() => {}} />
+        <DSDivTitle
+        button
+          products={products}
+          title="top selling"
+          onClick={() => {}}
+        />
       </div>
       <br />
       <DSFooter />

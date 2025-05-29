@@ -1,72 +1,91 @@
 import { DSButton } from "..";
+import { Product } from "../../../domain/entities/product.entity";
 import styles from "./title.module.scss";
+import { useNavigate } from "react-router";
 
 interface IProps {
   title: string;
   onClick: () => void;
   divider?: boolean;
+  button?: boolean;
+  products?: Product[];
 }
 
-const DSDivTitle = ({ title, onClick, divider = false }: IProps) => {
+const DSDivTittle = ({ title, onClick, divider = false, button = false, products }: IProps) => {
+  const navigate = useNavigate();
+  const getFourProducts = () => {
+    return [...(products ?? [])].sort(() => Math.random() - 0.5).slice(0, 4);
+  };
+
+  const calculateDiscount = (price: number, discountPercentage: number) => {
+    return price / (1 + discountPercentage / 100);
+  };
+
+  const handleClickProduct = (id: number) => {
+    navigate(`/detail/${id}`);
+  };
+
+  const productsToShow = getFourProducts();
+
   return (
     <div className={styles["div-arrival"]}>
       <p className={styles["p-arrival"]}>{title}</p>
       <div className={styles["div-cards"]}>
-        <div>
-          <div>
-            <img src="./src/presentation/assets/img/card.png" alt="card" />
-          </div>
-          <div >
-            <p className={styles["p-title-product"]}>T-Shirt With Tape Details</p>
-            <p>3.5</p>
-            <p className={styles["p-price-product"]}>$120</p>
+        {productsToShow?.map((product) => (
+          <button
+            type="button"
+            onClick={() => handleClickProduct(product.id)}
+            key={product.id}
+            className={styles["div-card-product"]}
+            style={{
+              background: "none",
+              border: "none",
+              padding: 0,
+              textAlign: "inherit",
+              width: "100%",
+              cursor: "pointer",
 
-          </div>
-        </div>
-        <div>
-          <div>
-            <img src="./src/presentation/assets/img/card.png" alt="card" />
-          </div>
-          <div >
-            <p className={styles["p-title-product"]}>T-Shirt With Tape Details</p>
-            <p>3.5</p>
-            <p className={styles["p-price-product"]}>$120</p>
-
-          </div>
-        </div>
-        <div>
-          <div>
-            <img src="./src/presentation/assets/img/card.png" alt="card" />
-          </div>
-          <div >
-            <p className={styles["p-title-product"]}>T-Shirt With Tape Details</p>
-            <p>3.5</p>
-            <p className={styles["p-price-product"]}>$120</p>
-
-          </div>
-        </div>
-        <div>
-          <div>
-            <img src="./src/presentation/assets/img/card.png" alt="card" />
-          </div>
-          <div >
-            <p className={styles["p-title-product"]}>T-Shirt With Tape Details</p>
-            <p>3.5</p>
-            <p className={styles["p-price-product"]}>$120</p>
-
-          </div>
-        </div>
+            }}
+          >
+            <div className={styles["div-card-product-img"]}>
+              <img src={product?.thumbnail} alt="Card" />
+            </div>
+            <div>
+              <p className={styles["p-title-product"]}>{product?.title}</p>
+              <p>{product?.rating}</p>
+              <div className={styles["div-price-product"]}>
+                <p className={styles["p-price-product"]}>
+                  $
+                  {calculateDiscount(
+                    product?.price,
+                    product?.discountPercentage
+                  ).toFixed(2)}
+                </p>
+                <p className={styles["p-discount-product"]}>
+                  ${product?.price}
+                </p>
+                <div className={styles["div-porcent-product"]}>
+                  <p className={styles["p-porcent-product"]}>
+                    -{product?.discountPercentage}%
+                  </p>
+                </div>
+              </div>
+            </div>
+          </button>
+        ))}
       </div>
+      {button &&
+      
       <DSButton
         color="black"
         backgroundColor="transparent"
         borderColor="gray"
         text="View All"
         onClick={onClick}
-      />
+      /> }
       {divider && <div className={styles["div-divider"]}></div>}
     </div>
   );
 };
 
-export default DSDivTitle;
+export default DSDivTittle;

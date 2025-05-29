@@ -1,22 +1,30 @@
 footer {
     background-color: #f0f0f0;
+    padding-top: 80px;
+    position: relative;
+    justify-items: center;
+    margin-top: 100px;
 
 }
 
 .card {
-   
+
     display: flex;
     padding: 36px 64px;
     background-color: black;
     border-radius: 20px;
-    max-width: 1240px;
+    max-width: 1840px;
     max-height: 180px;
-    margin: auto;
-    justify-content: space-between;
     align-items: center;
-    margin-left: 100px;
+    margin-top: -170px;
+    justify-content: space-between;
+    gap: 250px;
 
 
+}
+
+.card-img {
+    width: 551px;
 }
 
 .card-input {
@@ -24,8 +32,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 350px;
-    
+    width: 349px;
+
 }
 
 .card-input input {
@@ -42,33 +50,37 @@ footer {
     left: 12px;
     width: 25px;
     height: 25px;
-    
-}
- .input-Sub {
-  cursor: pointer;
- border: none;
 
 }
-.items{
+
+.input-Sub {
+    cursor: pointer;
+    border: none;
+
+}
+
+.items {
     display: flex;
     margin: auto;
-    padding: 50px;
+    padding: 50px 0;
     width: 1240px;
     height: 177px;
-    margin-left: 100px;
     justify-content: space-between;
-    
+    margin-bottom: 25px;
+
 
 
 
 }
-.items-1{
+
+.items-1 {
 
     max-width: 248px;
     height: 177px;
     gap: 35px;
 }
-.items-1 p{
+
+.items-1 p {
     font-weight: 400;
     size: 14px;
     line-height: 22px;
@@ -76,12 +88,14 @@ footer {
     color: #898481;
     margin-bottom: 39px;
 }
-.items-1 .logo{
+
+.items-1 .logo {
     width: 167px;
     height: 23px;
-    
+
 }
-.items-1 .icons{
+
+.items-1 .icons {
     gap: 20px;
     display: flex;
     width: 148px;
@@ -90,22 +104,41 @@ footer {
     justify-content: space-between;
 
 }
-.items-2{
+
+.items-2 {
     gap: 26px;
     height: 177px;
 }
-.creditos
-{
+
+.creditos {
     display: flex;
     justify-content: space-between;
-    margin-left: 100px ;
+    align-items: center;
+    padding: 10px 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+
+}
+ .div-divider {
+    margin: 20px 0;
+    width: 80%;
+    height: 1px;
+    background-color: #e6e6e6;
+  }
+
+.creditos p {
+    color: #898481;
+
+}
+
+.hr {
     padding: 10px 50px;
 
 }
-.creditos p{
-    color: #898481;
-}
-.hr{
-    padding: 10px 50px;
+
+.mediosPago {
+    display: flex;
+    justify-content: space-between;
 
 }
