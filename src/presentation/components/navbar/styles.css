@@ -53,4 +53,13 @@
       outline: none;
     }
   }
+  .p-user{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .user-icon{
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+  }
 }

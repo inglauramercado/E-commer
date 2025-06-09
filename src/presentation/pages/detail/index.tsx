@@ -12,6 +12,8 @@ const DetailPage = () => {
   const handLeOpen = () =>{
     setOpen(!open);
   }
+  const user = localStorage.getItem("user");
+
     const [products, setProducts] = useState<Product[]>([]);
   
 
@@ -41,7 +43,8 @@ const DetailPage = () => {
 
   return (
     <section>
-      {open && <DSDivSign onClose={handLeOpen}/>}
+      {!user ? open && <DSDivSign onClose={handLeOpen} />:null}
+
       <DSNavBar/>
       <div className="div-menu">
         <div><p>Home</p></div>

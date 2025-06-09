@@ -14,6 +14,8 @@ import { Product } from "../../../domain/entities/product-entity/product.entity"
 const PageHome = () => {
   const [open, setOpen] = useState<boolean>(true);
   const [products, setProducts] = useState<Product[]>([]);
+  const user = localStorage.getItem("user");
+
 
   useEffect(() => {
     const getData = async () => {
@@ -34,7 +36,7 @@ const PageHome = () => {
 
   return (
     <section>
-      {open && <DSDivSign onClose={handleOpen} />}
+      {!user ? open && <DSDivSign onClose={handleOpen} /> :null}
       <DSNavBar />
       <div>
         <div className="div-hero">

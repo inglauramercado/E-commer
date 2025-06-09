@@ -1,5 +1,25 @@
+import { useNavigate } from "react-router";
 import "./styles.css";
 const DSNavBar = () => {
+  const navigate = useNavigate();
+  const user = localStorage.getItem("user");
+
+  const onClickSingIn = ()=> {
+    if (!user){
+     // window.location.href = "/login"
+     navigate("/login");
+    }else {
+      /*localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      window.location.href = "/";*/
+     navigate("/profile");
+
+    }
+  }
+  const onLogout = ()=>{
+    localStorage.clear();
+    navigate("/");
+  }
   return (
     <div className="div-navbar-body">
       <div>
@@ -20,7 +40,18 @@ const DSNavBar = () => {
       </div>
       <div className="div-navbar-icon">
         <img src="/src/presentation/assets/icon/cart.svg" alt="Cart" />
-        <img src="/src/presentation/assets/icon/user.svg" alt="User" />
+        {
+          user ? (
+            <>
+            <p onClick={onLogout}>Logout</p>
+            <img src={localStorage.getItem("image")?? "/src/presentation/assets/icon/user.svg"} alt="User"
+            className="user-icon" />
+            </>
+          ):(
+            <img  onClick={onClickSingIn} src="/src/presentation/assets/icon/user.svg" alt="User" />
+          )
+        }
+        <p onClick={onClickSingIn} className="p-user"><strong>{user ?? "Sing In"} </strong></p>
       </div>
     </div>
   );
